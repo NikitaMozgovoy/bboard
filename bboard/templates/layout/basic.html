@@ -17,13 +17,13 @@
             {% endif %}
         </header>
         <h1>Объявления</h1>
-        <nav>
+        <aside>
             <a href="{% url 'main' %}">Главная</a>
             <a href="{% url 'add' %}">Создать объявление</a>
             {% for rubric in rubrics %}
             <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
             {% endfor %}
-        </nav>
+        </aside>
         <section>
             {% block content %}
             {% endblock content %}
