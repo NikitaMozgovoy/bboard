@@ -9,6 +9,6 @@
         <input type="submit" value="Добавить">
     </form>
 {% else %}
-    <p><a href="{% url 'login' %}">Войдите</a> в аккаунт или <a href="{% url 'registration' %}">зарегистрируйтесь</a></p>
+    <p><a style ="display:inline" href="{% url 'login' %}">Войдите</a> в аккаунт или <a style="display:inline" href="{% url 'registration' %}">зарегистрируйтесь</a></p>
 {% endif %}
 {% endblock content %}
