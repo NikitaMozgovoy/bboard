@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'samplesite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'django_db',
-        'USER' : 'user_name',
-        'PASSWORD' : 'password',
+        'NAME': 'django_bboard',
+        'USER' : 'bbadmin',
+        'PASSWORD' : 'DIOgamer2003',
         'HOST' : '127.0.0.1',
         'PORT' : '5432',
     }
