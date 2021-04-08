@@ -1,0 +1,29 @@
+article{
+    display:grid;
+    grid-template-columns: 265px 265px 265px 265px;
+    grid-column-gap:50px;
+    grid-row-gap: 50px;
+    grid-auto-rows:minmax(350px, auto);
+    margin:20px auto;
+    justify-content: center;
+    align-content:center;
+}
+.article__ad{
+    z-index: 2;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 25px;
+    position: relative;
+
+}
+.article__ad__image{
+    z-index: -100;
+    height:250px; 
+    width:250px;
+}
+.article_ad__title{
+    z-index: 20;
+    text-align:center;
+}
+.article__ad__price{
+}

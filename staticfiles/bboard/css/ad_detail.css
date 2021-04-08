@@ -1,0 +1,26 @@
+article{
+    display: grid;
+    height:auto;
+    grid-auto-rows:minmax(300px, auto);
+}
+.article__inner{
+    /* position:absolute; */
+    width:50%;
+    margin:0 auto;
+}
+.article__inner img{
+    margin-right: 50px;
+    float:left;
+}
+.article__inner h2{
+    left: 323px;
+    top: 21px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 37px;
+}
+.article__inner__info{
+    /* float:right; */
+}
