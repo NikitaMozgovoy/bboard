@@ -13,17 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path,include
-from bboard.views import SignUpView
-from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView, \
+from bboard.views import SignUpView, LoginView
+from django.contrib.auth.views import LogoutView, PasswordChangeView, PasswordChangeDoneView, \
 PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('bboard.urls')),
     path('accounts/login/', LoginView.as_view(), name='login'),
-    path('accounts/logout/', LogoutView.as_view(next_page="bboard:index"), name='logout'),
+    path('accounts/logout/', LogoutView.as_view(next_page="main"), name='logout'),
     path('accounts/password_change/', PasswordChangeView.as_view(template_name='registration/change_password.html'),
     name='password_change'),
     path('accounts/password_change/done/', PasswordChangeDoneView.as_view(template_name='registration/password_changed.html'),
@@ -39,3 +41,7 @@ urlpatterns = [
     name='password_reset_complete'),
     path('accounts/registration/', SignUpView.as_view(), name="registration")
 ]
+urlpatterns += static(settings.MEDIA_URL,
+                document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL,
+                document_root=settings.STATIC_ROOT)

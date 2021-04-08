@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, ArchiveIndexView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, ArchiveIndexView, TemplateView, ListView
 from django.urls import reverse_lazy
+from django.contrib.auth.views import LoginView
+from django.db.models import Q
 
 from .models import Bb, Rubric
 from .forms import BbForm, SignUpForm
@@ -30,6 +32,7 @@ def by_rubric(request, rubric_id):
 class BbCreateView(CreateView):
     template_name='bboard/bb_create.html'
     form_class=BbForm
+    model = Bb
     success_url=reverse_lazy('main')
 
     def get_context_data(self, **kwargs):
@@ -42,12 +45,17 @@ class BbCreateView(CreateView):
         form.request = self.request
         return form
 
+    def get_initial(self):
+        initial = super(BbCreateView, self).get_initial()
+        initial['author'] = self.request.user.username
+        return initial
     
 class BbDetailView(DetailView):
     model = Bb
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['username'] = self.request.user.username
         context['rubrics'] = Rubric.objects.all()
         return context
 
@@ -76,3 +84,19 @@ class SignUpView(CreateView):
     form_class = SignUpForm
     success_url = reverse_lazy('login')
     template_name = 'registration/register.html'
+
+def profile(request):
+    bbs = Bb.objects.filter(author=request.user.username)
+    context = {'bbs':bbs}
+    return render(request, "bboard/profile.html", context)
+
+class SearchResultsView(ListView):
+    model = Bb
+    template_name = 'bboard/search_results.html'
+    
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list=Bb.objects.filter(
+            Q(title__icontains=query) | Q(content__icontains=query)
+        )
+        return object_list

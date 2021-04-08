@@ -1,8 +1,8 @@
 {% extends 'layout/basic.html' %}
 {% load static %}
-{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'bboard/css/main_page.css' %}">{% endblock link %}
+{% block title %}{% endblock title %}
 {% block content %}
-    {% for bb in bbs %}
+    {% for bb in object_list %}
     <a href="{% url 'detail' pk=bb.pk %}"><div class="article__ad">
         <img class="article__ad__image"src="{{ bb.image.url}}">
         <h2 class="article__ad__title">{{ bb.title }}</h2>
@@ -10,4 +10,4 @@
         <p class="article__ad__price">{{ bb.price }} руб.</p>
     </div></a>
     {% endfor %}
-{% endblock %}
+{% endblock content %}

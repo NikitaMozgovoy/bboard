@@ -2,14 +2,14 @@ from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm  
 from django import forms
 from .models import Bb, CustomUser
+from django.urls import reverse_lazy
 
 class BbForm(ModelForm):
+    
     class Meta:
         model = Bb
-        fields = ('title', 'content', 'price', 'rubric')
-
-    def save(self, request):
-        self.author=request.user
+        fields = ['title', 'content', 'price', 'rubric', 'image', 'phone', 'author', 'place']
+        widgets = {'author': forms.HiddenInput()}
 
 class SignUpForm(UserCreationForm):
     username = forms.CharField(label = "Имя пользователя", widget = forms.TextInput(attrs={'class': 'form-control'}))

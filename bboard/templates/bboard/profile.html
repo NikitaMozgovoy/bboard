@@ -1,0 +1,23 @@
+{% extends 'layout/basic.html' %}
+{% load static %}
+{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'bboard/css/profile.css' %}">{% endblock link %}
+{% block content %}
+    {% for bb in bbs %}
+    <div class="article__inner">
+        <p>Рубрика: <a style="display: inline;" href = "{% url 'by_rubric' bb.rubric.pk %}">{{ bb.rubric.name }}</a></p>
+        <h2 style="top:10px; left:150px;">{{ bb.title }}</h2>
+        <img style = "height:250px; width:250px;" src="{{ bb.image.url }}">
+        <div class="article__inner__info">
+            <p style="font-size:12px;">{{ bb.published|date:"d.m.Y H:i:s" }}</p><br>
+            <p>{{ bb.content }}</p><br>
+            <p>Цена: {{ bb.price }}</p>
+            <p>Автор: {{ bb.author }} </p><br>
+            {% if user.username == bb.author %}
+            <a href="{% url 'update' pk=bb.pk %}">Изменить</a>
+            <a href="{% url 'delete' pk=bb.pk %}">Удалить</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+    <a href="{% url 'logout' %}">Выйти</a>
+{% endblock %}

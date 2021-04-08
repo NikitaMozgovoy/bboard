@@ -9,7 +9,7 @@ class CustomUser(AbstractUser):
     password1 = models.CharField(max_length=30, verbose_name='Пароль_1')
     password2 = models.CharField(max_length=30, verbose_name='Пароль_2')
     is_active = models.BooleanField(default = True, verbose_name='Онлайн')
-
+    
     USERNAME_FIELD = "username"
 
     class Meta:
@@ -28,12 +28,15 @@ class CustomUser(AbstractUser):
 
         
 class Bb(models.Model):
-    title=models.CharField(max_length=250, verbose_name='Товар')
-    content=models.TextField(null = True, blank = True, verbose_name='Описание')
-    price = models.FloatField(null=True, blank = True, verbose_name='Цена')
-    published = models.DateTimeField(auto_now_add = True, db_index = True, verbose_name='Опубликовано')
-    rubric = models.ForeignKey('Rubric', null=True, blank = True, on_delete=models.PROTECT, verbose_name='Рубрика')
-    author = models.ForeignKey('CustomUser', null = True, blank = True, on_delete=models.PROTECT, verbose_name = "Автор", editable = False, auto_created= True, to_field="username")
+    title=models.CharField(verbose_name='Товар', max_length=250, null= False, blank = False, default = '', )
+    content=models.TextField(verbose_name='Описание', null = False, blank = False, default='', )
+    price = models.FloatField(verbose_name='Цена', null=False, blank = False, default=0)
+    published = models.DateTimeField(auto_now_add = True, verbose_name='Опубликовано', db_index = True)
+    rubric = models.ForeignKey('Rubric', verbose_name='Рубрика', null=True, blank = False, on_delete=models.PROTECT)
+    author = models.CharField(max_length=30, verbose_name = "Автор", null=True)
+    image = models.ImageField(upload_to='images', editable=True, null = True, blank=False)
+    phone = models.CharField(verbose_name="Мобильный телефон" ,max_length=20, null=True, blank=False)
+    place = models.CharField(verbose_name="Адрес", max_length=80, null=True, blank=False)
 
     class Meta:
         verbose_name_plural="Объявления"
@@ -43,14 +46,6 @@ class Bb(models.Model):
     def __str__(self):
         return self.title
 
-    # def save(self, request,  commit=True):
-    #     bb = super().save(commit=False)
-    #     if not bb.pk:
-    #         bb.author = get_user(self.request)
-    #     if commit:
-    #         b.save()
-    #         self.save_m2m()
-    #     return bb
 
 class Rubric(models.Model):
     name=models.CharField(max_length=20, db_index=True, verbose_name='Название')

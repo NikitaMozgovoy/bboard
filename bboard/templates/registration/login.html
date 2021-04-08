@@ -10,7 +10,7 @@
     {{ form.as_p }}
     <input type="hidden" name="text" value="{{ next }}">
     <input type="submit" value="Войти">
-    <a href="{% url 'register' %}">Регистрация</a>
+    <a href="{% url 'registration' %}">Регистрация</a>
 </form>
 {% endif %}
 {% endblock %}

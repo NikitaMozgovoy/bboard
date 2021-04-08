@@ -1,11 +1,22 @@
 {% extends 'layout/basic.html' %}
+{% load static %}
+{% block link %}<link rel="stylesheet" type="text/css" href="{% static 'bboard/css/ad_detail.css' %}">{% endblock link %}
 {% block title %}{{ bb.title }}{% endblock title %}
 {% block content %}
-<p>Рубрика {{ bb.rubric.name }}</p>
-<h2>{{ bb.title }}</h2>
-<p>{{ bb.content }}</p>
-<p>Цена: {{ bb.price }}</p>
-<p>Автор: {{ bb.author }} </p>
-<a href="{% url 'update' pk=bb.pk %}">Изменить</a>
-<a href="{% url 'delete' pk=bb.pk %}">Удалить</a>
+<div class="article__inner">
+    <p>Рубрика: <a style="display:inline" href = "{% url 'by_rubric' bb.rubric.pk %}">{{ bb.rubric.name }}</a></p>
+    <h2 style="top:10px; left:150px;">{{ bb.title }}</h2>
+    <img style = "height:250px; width:250px;" src="{{ bb.image.url }}">
+    <div class="article__inner__info">
+        <p style="font-size:12px;">{{ bb.published|date:"d.m.Y H:i:s" }}</p><br>
+        <p>{{ bb.place }}</p>
+        <p>{{ bb.content }}</p><br>
+        <p>Цена: {{ bb.price }}</p>
+        <p>Автор: {{ bb.author }}</p>
+        {% if username == bb.author %}
+            <a href="{% url 'update' pk=bb.pk %}">Изменить</a>
+            <a href="{% url 'delete' pk=bb.pk %}">Удалить</a>
+        {% endif %}
+    </div>
+</div>
 {% endblock content %}

@@ -1,8 +1,9 @@
+{% extends 'layout/basic.html' %}
 {% block title %}Доска объявлений{% endblock title %}
 {% block content %}
 <h2>Изменение объявлений</h2>
-{% if  customuser.username == bb.author %}
-<form method="post">
+{% if  user.username == bb.author %}
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Сохранить">

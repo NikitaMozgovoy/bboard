@@ -1,32 +1,47 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html style="overflow: overlay;">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="{% static 'bboard/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'bboard/css/basic.css' %}">
+        {% block link %}{% endblock link %}
         <title>{% block title %}Главная{% endblock title %}</title>
     </head>
     <body>
         <header>
-            {% if user.is_aunthificated %}
-            <p>Добро пожаловать, {{ user.username }}</p>
-            {% else %}
-            <a href="{% url 'login' %}">Вход</a>
-            <a href="{% url 'registration' %}">Регистрация</a>
-            {% endif %}
+            <nav>
+                <a href="{% url 'main' %}"><img src="{% static 'bboard/img/icon.png' %}" class="nav__icon"></a>
+                <a href="#">Помощь</a>
+                <a href="#">О нас</a>
+                <a href="#">Обратная связь</a>
+                {% if user.is_authenticated %}
+                    <p>Добро пожаловать, <a style="display: inline; margin:0" href="{% url 'profile' %}">{{ user.username }}</a></p>
+                {% else %}
+                    <a href="{% url 'login' %}">Вход</a>
+                    <a href="{% url 'registration' %}">Регистрация</a>
+                {% endif %}
+            </nav>
+            <a class="header__add-button" href="{% url 'add' %}">Разместить объявление</a>
+            <p class="header__slogan">Найдите все, что ищете!</p>
+            <div class="header__categories">
+                <div class="header__categories__button"><a href="#">Категории</a></div>
+                <div class="header__categories__list">
+                {% for rubric in rubrics %}
+                    <a class="header__categories__list__unit" href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
+                {% endfor %}
+                </div>
+            </div>
+            <div class="header__search">
+                <form action="{% url 'search_results' %}" method="get">
+                    <input class="header__search__inner" name="q" type="text" placeholder="Search...">
+                  </form>
+            </div>
         </header>
-        <h1>Объявления</h1>
-        <aside>
-            <a href="{% url 'main' %}">Главная</a>
-            <a href="{% url 'add' %}">Создать объявление</a>
-            {% for rubric in rubrics %}
-            <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
-            {% endfor %}
-        </aside>
-        <section>
+        <article>
             {% block content %}
             {% endblock content %}
-        </section>
+        </article>
+        <footer></footer>
     </body>
 </html>

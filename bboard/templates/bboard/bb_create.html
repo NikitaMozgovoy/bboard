@@ -1,9 +1,14 @@
-    {% block title %}Доска объявлений{% endblock title %}
-    {% block content %}
+{% extends 'layout/basic.html' %}
+{% block title %}Доска объявлений{% endblock title %}
+{% block content %}
+{% if user.is_authenticated %}
     <h2>Добавление объявлений</h2>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Добавить">
     </form>
-    {% endblock content %}
+{% else %}
+    <p><a href="{% url 'login' %}">Войдите</a> в аккаунт или <a href="{% url 'registration' %}">зарегистрируйтесь</a></p>
+{% endif %}
+{% endblock content %}
