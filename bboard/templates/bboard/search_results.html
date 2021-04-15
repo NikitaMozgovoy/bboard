@@ -4,7 +4,7 @@
 {% block content %}
     {% for bb in object_list %}
     <a href="{% url 'detail' pk=bb.pk %}"><div class="article__ad">
-        <img class="article__ad__image"src="{{ bb.image.url}}">
+        <img style = "max-height:250px; max-width:300px;" class="article__ad__image" src="{{ bb.image.url}}">
         <h2 class="article__ad__title">{{ bb.title }}</h2>
         <p class="article__ad__place">{{ bb.place }}</p>
         <p class="article__ad__price">{{ bb.price }} руб.</p>

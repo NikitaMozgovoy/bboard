@@ -25,7 +25,7 @@
             <a class="header__add-button" href="{% url 'add' %}">Разместить объявление</a>
             <p class="header__slogan">Найдите все, что ищете!</p>
             <div class="header__categories">
-                <div class="header__categories__button"><a href="#">Категории</a></div>
+                <div class="header__categories__button"><a style = "color:white;" href="#">Категории</a></div>
                 <div class="header__categories__list">
                 {% for rubric in rubrics %}
                     <a class="header__categories__list__unit" href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
@@ -35,6 +35,7 @@
             <div class="header__search">
                 <form action="{% url 'search_results' %}" method="get">
                     <input class="header__search__inner" name="q" type="text" placeholder="Введите название товара. Например, гараж">
+                    <p><button class="header__search__inner__button" type='submit'>Найти</button></p>
                   </form>
             </div>
         </header>

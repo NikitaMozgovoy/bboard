@@ -1,8 +1,8 @@
 {% extends 'layout/basic.html' %}
 {% block title %}{{ current_rubric.name }}{% endblock title %}
 {% block content %}
-    <h2>Рубрика {{ current_rubric.name }}</h2>
-    {% if bbs == Null %}
+    <h2>Рубрика : {{ current_rubric.name }}</h2>
+    {% if not bbs %}
         <p>В этой рубрике еще нет объявлений. Будьте первыми</p> 
     {% else %}
     {% for bb in bbs %}
