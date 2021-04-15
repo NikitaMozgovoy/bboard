@@ -5,7 +5,6 @@ a{
     text-decoration:none;
 }
 
-
 nav{
     background-color: darkgray;
     align-items: center;
@@ -18,7 +17,7 @@ nav a,p{
 }
 .nav__icon{
     position:absolute;
-    height: 108px;
+    height: 200px;
     left:331px;
     top:35px;
     width: 108px;

@@ -11,7 +11,7 @@ article{
 .article__ad{
     z-index: 2;
     /* border: 1px solid #000000; */
-    /* box-sizing: border-box; */
+    box-sizing: border-box;
     border-radius: 25px;
     position: relative;
 
