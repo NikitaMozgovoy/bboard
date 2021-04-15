@@ -1,6 +1,6 @@
 article{
     display:grid;
-    grid-template-columns: 265px 265px 265px 265px;
+    grid-template-columns: 280px 280px 280px 280px;
     grid-column-gap:50px;
     grid-row-gap: 50px;
     grid-auto-rows:minmax(350px, auto);
