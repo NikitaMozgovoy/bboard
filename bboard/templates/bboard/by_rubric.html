@@ -2,6 +2,9 @@
 {% block title %}{{ current_rubric.name }}{% endblock title %}
 {% block content %}
     <h2>Рубрика {{ current_rubric.name }}</h2>
+    {% if bbs == Null %}
+        <p>В этой рубрике еще нет объявлений. Будьте первыми</p> 
+    {% else %}
     {% for bb in bbs %}
     <div>
         <h2>{{ bb.title }}</h2>
@@ -9,4 +12,5 @@
         <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
     </div>
     {% endfor %}
+    {% endif %}
 {% endblock content %}
