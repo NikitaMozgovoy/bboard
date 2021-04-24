@@ -33,8 +33,8 @@ class Bb(models.Model):
     price = models.FloatField(verbose_name='Цена', null=False, blank = False, default=0)
     published = models.DateTimeField(auto_now_add = True, verbose_name='Опубликовано', db_index = True)
     rubric = models.ForeignKey('Rubric', verbose_name='Рубрика', null=True, blank = False, on_delete=models.PROTECT)
-    author = models.CharField(max_length=30, verbose_name = "Автор", null=True)
-    image = models.ImageField(upload_to='images', editable=True, null = True, blank=False)
+    author = models.CharField(max_length=30, verbose_name = "Автор", null=False)
+    image = models.ImageField(upload_to='images', editable=True, null = False, blank=False)
     phone = models.CharField(verbose_name="Мобильный телефон" ,max_length=20, null=True, blank=False)
     place = models.CharField(verbose_name="Адрес", max_length=80, null=True, blank=False)
 
