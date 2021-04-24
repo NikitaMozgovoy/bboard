@@ -24,6 +24,7 @@ PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordRese
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('bboard.urls')),
+    path('api/', include('bboard-ui.api.urls')),
     path('accounts/login/', LoginView.as_view(), name='login'),
     path('accounts/logout/', LogoutView.as_view(next_page="main"), name='logout'),
     path('accounts/password_change/', PasswordChangeView.as_view(template_name='registration/change_password.html'),
@@ -40,7 +41,6 @@ urlpatterns = [
     path('accounts/reset/done/', PasswordResetCompleteView.as_view(template_name='registration/password_confirmed.html'),
     name='password_reset_complete'),
     path('accounts/registration/', SignUpView.as_view(), name="registration"),
-    path('api/', include('bboard-ui.api.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL,
                 document_root=settings.MEDIA_ROOT)
