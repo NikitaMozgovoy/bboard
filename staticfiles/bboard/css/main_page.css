@@ -1,6 +1,6 @@
 article{
     display:grid;
-    grid-template-columns: 265px 265px 265px 265px;
+    grid-template-columns: 280px 280px 280px 280px;
     grid-column-gap:50px;
     grid-row-gap: 50px;
     grid-auto-rows:minmax(350px, auto);
@@ -11,7 +11,7 @@ article{
 .article__ad{
     z-index: 2;
     /* border: 1px solid #000000; */
-    /* box-sizing: border-box; */
+    box-sizing: border-box;
     border-radius: 25px;
     position: relative;
 
@@ -19,7 +19,7 @@ article{
 .article__ad__image{
     z-index: -100;
     height:250px; 
-    width:250px;
+    width:270px;
 }
 .article_ad__title{
     z-index: 20;

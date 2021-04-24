@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
 from bboard.views import SignUpView, LoginView
 from django.contrib.auth.views import LogoutView, PasswordChangeView, PasswordChangeDoneView, \
 PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
@@ -39,7 +39,8 @@ urlpatterns = [
     name='password_reset_confirm'),
     path('accounts/reset/done/', PasswordResetCompleteView.as_view(template_name='registration/password_confirmed.html'),
     name='password_reset_complete'),
-    path('accounts/registration/', SignUpView.as_view(), name="registration")
+    path('accounts/registration/', SignUpView.as_view(), name="registration"),
+    path('api/', include('bboard-ui.api.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL,
                 document_root=settings.MEDIA_ROOT)
