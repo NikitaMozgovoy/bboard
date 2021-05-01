@@ -1,6 +1,7 @@
 from .models import Bb, Rubric
 from rest_framework import viewsets, permissions
 from .serializers import BbSerializer, RubricSerializer, BbListRetrieveSerializer
+from rest_framework.permissions import BasePermission, IsAuthenticated, SAFE_METHODS, IsAdminUser
 
 class BbViewSet(viewsets.ModelViewSet):
     queryset = Bb.objects.all()
