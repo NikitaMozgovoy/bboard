@@ -4,7 +4,7 @@ from .serializers import BbSerializer, RubricSerializer, BbListRetrieveSerialize
 
 class BbViewSet(viewsets.ModelViewSet):
     queryset = Bb.objects.all()
-    permission_classes=[permissions.AllowAny]
+    permission_classes=[IsAuthenticated & IsAdminUser]
     serializer_class=BbSerializer
 
     action_to_serializer = {
@@ -18,6 +18,6 @@ class BbViewSet(viewsets.ModelViewSet):
 
 class RubricViewSet(viewsets.ModelViewSet):
     queryset = Rubric.objects.all()
-    permission_classes=[permissions.AllowAny]
+    permission_classes=[IsAuthenticated & IsAdminUser]
     serializer_class=RubricSerializer
 
