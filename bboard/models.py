@@ -34,7 +34,7 @@ class Bb(models.Model):
     published = models.DateTimeField(auto_now_add = True, verbose_name='Опубликовано', db_index = True)
     rubric = models.ForeignKey('Rubric', verbose_name='Рубрика', null=True, blank = False, on_delete=models.PROTECT)
     author = models.CharField(max_length=30, verbose_name = "Автор", null=False, default="Пользователь")
-    image = models.ImageField(upload_to='images', editable=True, null = False, blank=False)
+    image = models.ImageField(upload_to='images/ads', editable=True, null = False, blank=False)
     phone = models.CharField(verbose_name="Мобильный телефон" ,max_length=20, null=True, blank=False)
     place = models.CharField(verbose_name="Адрес", max_length=80, null=True, blank=False)
 
