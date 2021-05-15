@@ -6,9 +6,11 @@ class CustomUser(AbstractUser):
     username = models.CharField(max_length=50, verbose_name='Никнейм', unique=True, db_index = True)
     first_name = models.CharField(max_length=30, verbose_name='Имя')
     last_name = models.CharField(max_length=30, verbose_name='Фамилия')
+    email=models.EmailField(max_length=64,verbose_name = "E-mail")
     password1 = models.CharField(max_length=30, verbose_name='Пароль_1')
     password2 = models.CharField(max_length=30, verbose_name='Пароль_2')
     is_active = models.BooleanField(default = True, verbose_name='Онлайн')
+    phone = models.CharField(max_length=30, verbose_name="Телефон")
     
     USERNAME_FIELD = "username"
 
@@ -35,7 +37,7 @@ class Bb(models.Model):
     rubric = models.ForeignKey('Rubric', verbose_name='Рубрика', null=True, blank = False, on_delete=models.PROTECT)
     author = models.CharField(max_length=30, verbose_name = "Автор", null=False, default="Пользователь")
     image = models.ImageField(upload_to='images/ads', editable=True, null = False, blank=False)
-    phone = models.CharField(verbose_name="Мобильный телефон" ,max_length=20, null=True, blank=False)
+    phone = models.CharField(verbose_name="Мобильный телефон" , max_length=20, null=False, blank=False, default="+79999999999")
     place = models.CharField(verbose_name="Адрес", max_length=80, null=True, blank=False)
 
     class Meta:

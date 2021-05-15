@@ -1,14 +1,14 @@
 {% extends 'layout/basic.html' %}
 {% block title %}{{ current_rubric.name }}{% endblock title %}
 {% block content %}
-    <h2>Рубрика : {{ current_rubric.name }}</h2>
+    <h2>Рубрика: <a style="display:inline" href = "{% url 'by_rubric' current_rubric.pk %}"><b>{{ current_rubric.name }}</b></a></h2>
     {% if not bbs %}
         <p>В этой рубрике еще нет объявлений. Будьте первыми</p> 
     {% else %}
     {% for bb in bbs %}
     <div>
         <h2>{{ bb.title }}</h2>
-        <img style = "height:250px; width:250px;" src="{{ bb.image.url }}">
+        <a href="{% url 'detail' bb.pk %}"><img style = "height:250px; width:250px;" src="{{ bb.image.url }}"></a>
         <p>{{ bb.content }}</p>
         <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
     </div>
