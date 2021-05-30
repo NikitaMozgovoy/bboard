@@ -19,7 +19,7 @@ class BbListRetrieveSerializer(serializers.ModelSerializer):
         model = Bb
         fields = '__all__'
 
-class UsersSerializer(serializers.modelSerializer):
+class UsersSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = '__all__'
