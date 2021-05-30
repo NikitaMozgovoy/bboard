@@ -48,6 +48,7 @@ class BbCreateView(CreateView):
     def get_initial(self):
         initial = super(BbCreateView, self).get_initial()
         initial['author'] = self.request.user.username
+        initial['phone'] = self.request.user.phone
         return initial
     
 class BbDetailView(DetailView):
@@ -56,7 +57,6 @@ class BbDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['username'] = self.request.user.username
-        context['phone'] = self.request.user.phone
         context['rubrics'] = Rubric.objects.all()
         return context
 
