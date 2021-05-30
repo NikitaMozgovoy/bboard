@@ -62,14 +62,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         verbose_name='Пользователь'
         ordering=['username']
 
-    def create(self, validated_data):
-        user=get_user_model().objects.create(
-        username = validated_data['username']
-    )
+    def has_perm(self, perm, obj=None):
+        return self.is_superuser
 
-        user.set_password(validated_data['password'])
-        user.save()
-        return user
+    def has_module_perms(self, app_label):
+        return self.is_superuser
 
         
 class Bb(models.Model):
