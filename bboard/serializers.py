@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Bb, Rubric
+from .models import Bb, CustomUser, Rubric
 
 class BbSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,4 +17,9 @@ class BbListRetrieveSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Bb
+        fields = '__all__'
+
+class UsersSerializer(serializers.modelSerializer):
+    class Meta:
+        model = CustomUser
         fields = '__all__'
