@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, User
 from django.db.models.fields import EmailField
+from time import strftime, gmtime
 
 class UserManager(BaseUserManager):
     """
@@ -17,7 +18,7 @@ class UserManager(BaseUserManager):
         if email is None:
             raise TypeError('Users must have an email address.')
 
-        user = self.model(username=username, email=self.normalize_email(email))
+        user = self.model(username=username, email=self.normalize_email(email), date_joined=strftime("%Y-%m-%d %H:%M:%S", gmtime()))
         user.set_password(password)
         user.save()
 
@@ -45,6 +46,7 @@ class CustomUser(AbstractBaseUser):
     phone = models.CharField(max_length=30, verbose_name="Телефон", default="Номер не указан")
     is_superuser = models.BooleanField(default=False, null=False)
     is_staff = models.BooleanField(default=False, null=False)
+    date_joined = models.DateTimeField(default=strftime("%Y-%m-%d %H:%M:%S", gmtime()))
 
     USERNAME_FIELD = "username"
     EmailField = "email"
