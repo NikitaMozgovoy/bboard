@@ -10,7 +10,7 @@ class CustomUser(AbstractUser):
     password1 = models.CharField(max_length=30, verbose_name='Пароль_1')
     password2 = models.CharField(max_length=30, verbose_name='Пароль_2')
     is_active = models.BooleanField(default = True, verbose_name='Онлайн')
-    phone = models.CharField(max_length=30, verbose_name="Телефон")
+    phone = models.CharField(max_length=30, verbose_name="Телефон", default='+79999999999')
     
     USERNAME_FIELD = "username"
 
