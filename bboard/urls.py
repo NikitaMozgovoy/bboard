@@ -4,6 +4,12 @@ from .views import by_rubric, BbCreateView, BbDetailView, BbEditView, BbDeleteVi
 from rest_framework import routers
 from .api import BbViewSet, RubricViewSet, UsersViewSet
 
+
+router = routers.DefaultRouter()
+router.register('api/bboard', BbViewSet, 'bboard')
+router.register('api/rubric', RubricViewSet, 'rubric')
+router.register('api/users', UsersViewSet, 'users')
+
 urlpatterns = [
     path('<int:rubric_id>/', by_rubric, name='by_rubric'),
     path('add/', BbCreateView.as_view(), name="add"),
@@ -12,15 +18,11 @@ urlpatterns = [
     path('delete/<int:pk>', BbDeleteView.as_view(), name="delete"),
     path('profile/', profile, name="profile"),
     path('search/', SearchResultsView.as_view(), name="search_results"),
+    path('api/', include(router.urls), name="api"),
     path('', BbIndexView.as_view(), name='main'),
 ]
 
 
-
-router = routers.DefaultRouter()
-router.register('api/bboard', BbViewSet, 'bboard')
-router.register('api/rubric', RubricViewSet, 'rubric')
-router.register('api/users', UsersViewSet, 'users')
 
 
 urlpatterns+=router.urls
