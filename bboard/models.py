@@ -1,18 +1,57 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, User
+from django.db.models.fields import EmailField
 
+class UserManager(BaseUserManager):
+    """
+    Django требует, чтобы кастомные пользователи определяли свой собственный
+    класс Manager. Унаследовавшись от BaseUserManager, мы получаем много того
+    же самого кода, который Django использовал для создания User (для демонстрации).
+    """
 
-class CustomUser(AbstractUser):
+    def create_user(self, username, email, password=None):
+        """ Создает и возвращает пользователя с имэйлом, паролем и именем. """
+        if username is None:
+            raise TypeError('Users must have a username.')
+
+        if email is None:
+            raise TypeError('Users must have an email address.')
+
+        user = self.model(username=username, email=self.normalize_email(email))
+        user.set_password(password)
+        user.save()
+
+        return user
+
+    def create_superuser(self, username, email, password):
+        """ Создает и возввращет пользователя с привилегиями суперадмина. """
+        if password is None:
+            raise TypeError('Superusers must have a password.')
+
+        user = self.create_user(username, email, password)
+        user.is_superuser = True
+        user.is_staff = True
+        user.save()
+
+        return user
+
+class CustomUser(AbstractBaseUser):
     username = models.CharField(max_length=50, verbose_name='Никнейм', unique=True, db_index = True)
     first_name = models.CharField(max_length=30, verbose_name='Имя')
     last_name = models.CharField(max_length=30, verbose_name='Фамилия')
     email=models.EmailField(max_length=64,verbose_name = "E-mail")
-    password1 = models.CharField(max_length=30, verbose_name='Пароль_1')
-    password2 = models.CharField(max_length=30, verbose_name='Пароль_2')
+    password = models.CharField(max_length=30, verbose_name='Пароль')
     is_active = models.BooleanField(default = True, verbose_name='Онлайн')
     phone = models.CharField(max_length=30, verbose_name="Телефон", default="Номер не указан")
-    
+    is_superuser = models.BooleanField(default=False, null=False)
+    is_staff = models.BooleanField(default=False, null=False)
+
     USERNAME_FIELD = "username"
+    EmailField = "email"
+
+    REQUIRED_FIELDS = ['email', 'password']
+
+    objects=UserManager()
 
     class Meta:
         verbose_name_plural="Пользователи"
@@ -24,7 +63,7 @@ class CustomUser(AbstractUser):
         username = validated_data['username']
     )
 
-        user.set_password(validated_data['password1'])
+        user.set_password(validated_data['password'])
         user.save()
         return user
 
