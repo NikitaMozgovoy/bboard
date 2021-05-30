@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'samplesite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'django_bboard',
+        'NAME': 'django_bb',
         'USER' : 'bbadmin',
         'PASSWORD' : 'DIOgamer2003',
         'HOST' : '127.0.0.1',
