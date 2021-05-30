@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path,include
 from .views import by_rubric, BbCreateView, BbDetailView, BbEditView, BbDeleteView, BbIndexView, profile, SearchResultsView
 from rest_framework import routers
-from .api import BbViewSet, RubricViewSet
+from .api import BbViewSet, RubricViewSet, UsersViewSet
 
 urlpatterns = [
     path('<int:rubric_id>/', by_rubric, name='by_rubric'),
@@ -20,6 +20,7 @@ urlpatterns = [
 router = routers.DefaultRouter()
 router.register('api/bboard', BbViewSet, 'bboard')
 router.register('api/rubric', RubricViewSet, 'rubric')
+router.register('api/users', UsersViewSet, 'users')
 
 
 urlpatterns+=router.urls
