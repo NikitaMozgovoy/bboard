@@ -5,6 +5,7 @@ from django.views.generic import CreateView, DetailView, UpdateView, DeleteView,
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 from .models import Bb, Rubric
 from .forms import BbForm, SignUpForm
@@ -29,6 +30,7 @@ def by_rubric(request, rubric_id):
     context={"bbs":bbs, "rubrics": rubrics, "current_rubric": current_rubric}
     return render(request, 'bboard/by_rubric.html', context)
 
+
 class BbCreateView(CreateView):
     template_name='bboard/bb_create.html'
     form_class=BbForm
@@ -44,12 +46,13 @@ class BbCreateView(CreateView):
         form = super().get_form(form_class)
         form.request = self.request
         return form
-
+    
     def get_initial(self):
-        initial = super(BbCreateView, self).get_initial()
-        initial['author'] = self.request.user.username
-        initial['phone'] = self.request.user.phone
-        return initial
+        if self.request.user.username!="":
+            initial = super(BbCreateView, self).get_initial()
+            initial['author'] = self.request.user.username
+            initial['phone'] = self.request.user.phone
+            return initial
     
 class BbDetailView(DetailView):
     model = Bb
@@ -86,6 +89,11 @@ class SignUpView(CreateView):
     success_url = reverse_lazy('login')
     template_name = 'registration/register.html'
 
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context['rubrics'] = Rubric.objects.all()
+        return context
+
 def profile(request):
     bbs = Bb.objects.filter(author=request.user.username)
     context = {'bbs':bbs}
@@ -95,6 +103,11 @@ class SearchResultsView(ListView):
     model = Bb
     template_name = 'bboard/search_results.html'
     
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context['rubrics'] = Rubric.objects.all()
+        return context
+
     def get_queryset(self):
         query = self.request.GET.get('q')
         object_list=Bb.objects.filter(

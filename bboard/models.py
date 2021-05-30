@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, User
+from django.contrib.auth.models import AbstractBaseUser, AnonymousUser, BaseUserManager, PermissionsMixin, AnonymousUser
 from django.db.models.fields import EmailField
 from time import strftime, gmtime
 
@@ -37,6 +37,16 @@ class UserManager(BaseUserManager):
         user.save()
 
         return user
+
+class Anonym(AnonymousUser):
+    id = None
+    is_staff = False
+    is_active = False
+    groups = []
+    user_permissions=[]
+    username=""
+    
+
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=50, verbose_name='Никнейм', unique=True, db_index = True)
@@ -100,3 +110,5 @@ class Rubric(models.Model):
     def __str__(self):
         return self.name
 
+import django.contrib.auth.models as django_auth_models
+django_auth_models.AnonymousUser = Anonym
