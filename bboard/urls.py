@@ -18,7 +18,6 @@ urlpatterns = [
     path('delete/<int:pk>', BbDeleteView.as_view(), name="delete"),
     path('profile/', profile, name="profile"),
     path('search/', SearchResultsView.as_view(), name="search_results"),
-    path('api/', include(router.urls), name="api"),
     path('', BbIndexView.as_view(), name='main'),
 ]
 

@@ -24,7 +24,7 @@ class CustomUser(AbstractUser):
         username = validated_data['username']
     )
 
-        user.set_password(validated_data['password'])
+        user.set_password(validated_data['password1'])
         user.save()
         return user
 

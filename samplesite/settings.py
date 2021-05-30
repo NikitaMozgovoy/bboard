@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': 'django_bb',
         'USER' : 'bbadmin',
         'PASSWORD' : 'DIOgamer2003',
-        'HOST' : '127.0.0.1',
+        'HOST' : '217.25.95.58',
         'PORT' : '5432',
     }
 }
