@@ -84,7 +84,7 @@ nav a,p{
     -webkit-transform: scaleY(1);
     -ms-transform: scaleY(1);
     transform: scaleY(1);
-    padding:10px 25px;
+    padding:6px 0;
 }
 .header__categories:hover{
     background: #00AAFF;

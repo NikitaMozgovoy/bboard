@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, User
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, User
 from django.db.models.fields import EmailField
 from time import strftime, gmtime
 
@@ -18,7 +18,9 @@ class UserManager(BaseUserManager):
         if email is None:
             raise TypeError('Users must have an email address.')
 
-        user = self.model(username=username, email=self.normalize_email(email), date_joined=strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+        date_joined = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+
+        user = self.model(username=username, email=self.normalize_email(email), date_joined=date_joined)
         user.set_password(password)
         user.save()
 
@@ -36,17 +38,17 @@ class UserManager(BaseUserManager):
 
         return user
 
-class CustomUser(AbstractBaseUser):
+class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=50, verbose_name='Никнейм', unique=True, db_index = True)
     first_name = models.CharField(max_length=30, verbose_name='Имя')
     last_name = models.CharField(max_length=30, verbose_name='Фамилия')
     email=models.EmailField(max_length=64,verbose_name = "E-mail")
-    password = models.CharField(max_length=30, verbose_name='Пароль')
+    password = models.CharField(max_length=300, verbose_name='Пароль')
     is_active = models.BooleanField(default = True, verbose_name='Онлайн')
     phone = models.CharField(max_length=30, verbose_name="Телефон", default="Номер не указан")
-    is_superuser = models.BooleanField(default=False, null=False)
-    is_staff = models.BooleanField(default=False, null=False)
-    date_joined = models.DateTimeField(default=strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+    is_superuser = models.BooleanField(verbose_name="Супер-пользователь", default=False, null=False)
+    is_staff = models.BooleanField(verbose_name="Персонал", default=False, null=False)
+    date_joined = models.DateField(verbose_name="Дата регистрации",default="2021-01-01")
 
     USERNAME_FIELD = "username"
     EmailField = "email"

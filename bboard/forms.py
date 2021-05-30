@@ -42,10 +42,10 @@ class SignUpForm(UserCreationForm):
     first_name = forms.CharField(label = "Имя", widget = forms.TextInput(attrs={'class': 'form-control'}), max_length=32)
     last_name=forms.CharField(label = "Фамилия", widget = forms.TextInput(attrs={'class': 'form-control'}), max_length=32)
     email=forms.EmailField(help_text = "Введите существующий адрес", label = "E-mail", widget = forms.EmailInput(attrs={'class': 'form-control'}), max_length=64)
-    password=forms.CharField(label = "Пароль", widget = forms.PasswordInput(attrs={'class': 'form-control'}))
-    phone = PhoneField(code_length=3, num_length=7, help_text = "В первое поле введите ", label = "Номер телефона  +7 ")
+    # password=forms.CharField(label = "Пароль", widget = forms.PasswordInput(attrs={'class': 'form-control'}))
+    phone = PhoneField(code_length=3, num_length=7, help_text = "В первое поле введите код города, во второе - сам номер", label = "Номер телефона  +7 ")
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'first_name', 'last_name', 'email', 'phone', 'password')
+        fields = ('username', 'first_name', 'last_name', 'email', 'phone')
     
