@@ -2,7 +2,7 @@
 {% block title %}Доска объявлений{% endblock title %}
 {% block content %}
 <h2>Изменение объявлений</h2>
-{% if  user.username == bb.author %}
+{% if  user.username == bb.author or user.is_superuser or user.is_staff %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}

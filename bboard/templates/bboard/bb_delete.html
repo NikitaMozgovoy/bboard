@@ -7,7 +7,7 @@
 <p>{{ bb.content }}</p>
 <p>Цена: {{ bb.price }}</p>
 
-{% if  user.username == bb.author or request.user.is_superuser %}
+{% if  user.username == bb.author or user.is_superuser or user.is_staff %}
 <form method ="post">
     {% csrf_token %}
     <input type="submit" value="Удалить">
