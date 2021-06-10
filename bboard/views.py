@@ -96,7 +96,8 @@ class SignUpView(CreateView):
 
 def profile(request):
     bbs = Bb.objects.filter(author=request.user.username)
-    context = {'bbs':bbs}
+    rubrics = Rubric.objects.all()
+    context = {'bbs':bbs, 'rubrics':rubrics}
     return render(request, "bboard/profile.html", context)
 
 class SearchResultsView(ListView):
