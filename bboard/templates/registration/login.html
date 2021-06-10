@@ -1,16 +1,19 @@
 {% extends 'layout/basic.html' %}
 {% block title %}Вход{% endblock title %}
 {% block content %}
-<h2>Вход</h2>
+<div class="login__form">
+<h2 class='login__header'>Вход</h2>
 {% if user.is_authenticated %}
 <p>Вы уже выполнили вход</p>
 {% else %}
-<form method="post">
+
+<form method="post" class='login'>
     {% csrf_token %}
     {{ form.as_p }}
     <input type="hidden" name="text" value="{{ next }}">
-    <input type="submit" value="Войти">
-    <a href="{% url 'registration' %}">Регистрация</a>
+    <div class='login__button__container'><button class="login__article__button"><input  type="submit" value="Войти" class="login__article__button__input"></button>
+    <a href="{% url 'registration' %}" class="login__form__registration">Регистрация</a></div>
 </form>
+</div>
 {% endif %}
 {% endblock %}

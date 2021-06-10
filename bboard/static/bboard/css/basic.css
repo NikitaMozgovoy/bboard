@@ -1,125 +1,433 @@
-a{
-    color:black;
-    display: block;
-    margin: 10px 0px;
-    text-decoration:none;
+.article{
+    min-height:600px;
+}
+/* HEADER */
+.header{
+    margin-left:auto;
+    margin-right:auto;
+    max-width: 1264px;
+    min-width: 320px;
+    width:100%;
 }
 
-    
-nav{
-    background-color: darkgray;
-    align-items: center;
-    display: flex;
-    justify-content: flex-end;
-    padding:30px 70px 30px 0;
+.header__username:active, /* активная/посещенная ссылка */
+.header__username:hover,  /* при наведении */
+.header__username{
+    text-decoration: none;
+    outline: none;
+    color: rgb(78, 78, 78);
+    font-style: oblique;
 }
-nav a,p{
-    margin:0 15px 0;
+.logo__menu{
+    display: grid;
+    /* grid-template-columns:  1fr 1fr; */
+}
+.header__menu{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.header__nav{
+    display: grid;
+    grid-template-columns:6fr max-content  max-content  max-content  max-content ;
+    justify-items: end;
+    background-color:#C4C4C4 ;
+    grid-column-gap: 70px;
+   height: 74px;
+   align-items: center;
 }
 .nav__icon{
+    padding:10px;
+    width: 110px;
+    z-index: 2;
     position:absolute;
-    height: 108px;
-    left:331px;
-    top:35px;
-    width: 108px;
+}
+
+.header__categories__search{
+    display: grid;
+    grid-template-columns: 1fr 5fr ;
+    grid-column-gap: 10px;
+    
+}
+
+.header__categories__button{
+    
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+   max-width: 300px;
+   width: 100%;
+   font-weight: bold;
+    color: white;
+    border:none;
 }
 .header__add-button{
-    position: absolute;
-    color:white;
-    padding:20px 38px;
-    left: 1200px;
-    top: 89px;
-    background: #00AAFF;
-    border-radius: 25px;    
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 40px;
+    background-color: rgb(40, 183, 255);
+    border-radius: 25px;
+    border:0; 
 }
-.header__slogan{
-    position: absolute;
-    left: 306px;
-    top: 189px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    line-height: 42px;
+.header__add-button:hover{
+    background-color: rgb(81, 195, 252);
 }
 
-.header__categories{
-    z-index:20;
-    -webkit-transition: 0.5s ease-in-out;
-    -moz-transition: 0.5s ease-in-out;
-    -o-transition: 0.5s ease-in-out;
-    transition: 0.5s ease-in-out;
-    border-radius: 25px;
-    position: absolute;
-    left: 306px;
-    top: 269px;
-    display:table;
-}
-.header__categories__button{
-    padding:9px 45px;
-    background: #00AAFF;
-    border-radius: 25px;
-}
-.header__categories__list__unit{
-    margin-top:-10px;
-    position: relative;
-    color:white;
-    text-align: center;
-    top: 100%;
-    left:0;
-    width: auto;
-    z-index: 10;
-    -webkit-transition: 0.5s ease-in-out;
-    -moz-transition: 0.5s ease-in-out;
-    -o-transition: 0.5s ease-in-out;
-    transition: 0.5s ease-in-out;
-    -webkit-transform: scaleY(0);
-    -ms-transform: scaleY(0);
-    transform: scaleY(0);
-    -webkit-transform-origin: 0 0;
-    -ms-transform-origin: 0 0;
-    transform-origin: 0 0;
-}
-.header__categories:hover .header__categories__list__unit{
-    -webkit-transform: scaleY(1);
-    -ms-transform: scaleY(1);
-    transform: scaleY(1);
-    padding:6px 0;
-}
-.header__categories:hover{
-    background: #00AAFF;
-}
-.header__search{
-    height:300px;
-}
 .header__search__inner{
-    position: absolute;
-    width: 500px;
-    height: 50px;
-    left: 577px;
-    top: 269px;
-    outline:none;
-    padding:0 15px;
-    border-radius: 25px;
+    padding:3px 8px;
+    margin:0 auto !important;
+    max-width:700px !important;
 }
 .header__search__inner__button{
-    cursor:pointer;
-    position: absolute;
-    color:white;
-    left: 1150px;
-    top: 267px;
-    border:0;
-    background: #00AAFF;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
-    padding:20px 42px;
-    -moz-border-radius: 25px;
-    -webkit-border-radius: 25px;
+    display: grid;
+    background-color: #FFBF75; 
     border-radius: 25px;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border: none;
+    width: 200px;
+    height: 40px;
 }
 
-body{
-    margin:0px;
+.header__search__form{
+    display: grid;
+    grid-template-columns: 3.5fr 1fr;
+    grid-column-gap:6px;
 }
-footer{
-    min-height:120px;
+
+.header__search__inner__button:hover{
+    background-color: #ffca8e; 
+}
+
+.header__search__inner__button:active{
+    background-color: #ffe8cd; 
+}
+
+
+.header__publication{
+    display: grid;
+    grid-template-columns: 9fr 3fr;
+
+}
+.header_gray{
+    position: absolute;
+    background-color:#C4C4C4 ;
+    height: 74px;
+    width: 100%;
+    z-index: -1;
+}
+.header__search__inner{
+    outline:none;
+    border-radius: 25px;
+    border:1px solid grey;
+    max-width: 814px;
+    height: 40px;
+border: 1px solid #000000;
+width: 100%;
+}
+
+
+.nav__item:active, /* активная/посещенная ссылка */
+.nav__item:hover,  /* при наведении */
+.nav__item{
+  text-decoration: none;
+  color: black;
+
+}
+
+.header__add-button:active, /* активная/посещенная ссылка */
+.header__add-button:hover,  /* при наведении */
+.header__add-button{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+
+}
+
+.header__search__inner__button__text:active, /* активная/посещенная ссылка */
+.header__search__inner__button__text:hover,  /* при наведении */
+.header__search__inner__button__text{
+ 
+
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+
+}
+
+.header__slogan{
+    font-size: 36px;
+    height: 110px;
+}
+
+.activeLink:active, /* активная/посещенная ссылка */
+.activeLink:hover,  /* при наведении */
+.activeLink{
+  text-decoration: none;
+  color: white;
+
+}
+/*END HEADER */
+
+/* * FOOTER */ 
+.footer{
+    background-color: black;
+    bottom:0;
+    height:90px;
+    display: grid;
+  
+}
+.footer__content{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    margin-left:75px;
+    margin-right:75px;
+}
+
+.footer__content__icons{
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.footer__content__copyright{
+  align-items: center;
+    display: grid;
+    justify-items: end;
+}
+
+.footer__content__icons__items{
+    width: 40px;
+}
+/* END FOOTER */
+/*ADD*/
+article{
+    
+    margin-left:auto;
+    margin-right:auto;
+    max-width: 1264px;
+    min-width: 320px;
+    width:100%;
+    margin-top: 60px;
+    margin-bottom: 60px;
+
+
+}
+.article{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-row-gap:50px;
+    grid-column-gap:10px;
+
+
+}
+.article__ad__image{
+    height: 285px;
+    width: 265px;
+    object-fit: cover;
+    border-radius: 25px 25px 0px 0px;
+    border:solid 1px gray;
+  }
+  
+  .article__ad{
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      max-width:265px;
+      width: 100%;
+      border-radius: 25px;
+      max-height: 400px;
+      height: 100%;
+  }
+  .article__ad__profile{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    max-width:265px;
+    width: 100%;
+    border-radius: 25px;
+    max-height: 600px;
+    height: 100%;
+  }
+  
+  .article__ad-container{
+      display: grid;
+      grid-template-rows: 1fr 1fr 0,2fr;
+  padding: 0px 15px 15px 15px;
+  align-items: center;
+  border:solid 1px gray;
+  border-radius:  0px 0px 25px 25px;
+  }
+  
+  .article__ad__image-container{
+      border-radius: 25px 25px 0px 0px;
+      display: grid;
+      align-items: center;
+      background-color: #C4C4C4;
+      height: 285px;
+  
+  }
+  
+  .article__ad__price{
+  font-size: 24px;
+  font-weight: bold;
+  }
+  
+  .article__ad__title{
+  align-self: start;
+  }
+
+  .article__ad__place{
+      color:#5f5a5a;
+      font-size: 14px;
+  }
+  
+  
+  .article__ad__link:active, /* активная/посещенная ссылка */
+  .article__ad__link:hover,  /* при наведении */
+  .article__ad__link{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+  
+  }
+/*ADD*/
+
+/* ВХОД */
+ input{
+    width: 100%;
+    padding: 0 0 10px 0;
+    border: none; 
+    border-bottom: 1px solid #e0e0e0;
+    background-color: transparent; 
+    outline: none;
+    transition: 0.3s;
+    margin-bottom:20px;
+
+}
+
+ label{
+    font-size:12px;
+    color: rgb(112, 112, 112);
+}
+
+.login__article__button{
+    background-color: #00AAFF;
+    border:none;
+    border-radius: 30px;
+    height: 40px;
+    width: 179px;
+    color:white;
+    font-weight: bold;
+    padding-top:7px;
+
+
+}
+
+.login input .login__article__button__input{
+color: white;
+}
+.login__article__button-container{
+
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+.login__article__registration{
+    margin:20px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+.nav__item:active, /* активная/посещенная ссылка */
+.nav__item:hover,  /* при наведении */
+.nav__item{
+ 
+  color:black;
+
+}
+
+.login__article{
+        margin-top:50px;
+            margin-left:auto;
+            margin-right:auto;
+            max-width: 700px;
+            min-width: 320px;
+            width:100%;
+           
+        
+    
+}
+
+.login__article__header{
+    background-color: white;
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+.login__form{
+    margin-left:auto;
+    margin-right:auto;
+    max-width: 700px;
+    min-width: 320px;
+    width:100%;
+    padding:30px;
+    border: solid 1px gray
+}
+
+.login__button__container{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+    align-content: center;
+}
+
+
+.login__form__registration:active, /* активная/посещенная ссылка */
+.login__form__registration:hover,  /* при наведении */
+.login__form__registration{
+    outline: none;
+    color: #5f5a5a;
+    text-decoration: none;
+    text-align: center;
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
+.login__header{
+    margin-bottom: 40px;
+}
+.registration-container{
+    margin-left:auto;
+    margin-right:auto;
+    max-width: 700px;
+    min-width: 320px;
+    width:100%;
+    padding:30px;
+    border: solid 1px gray
+}
+
+
+.header__login{
+color:black;
+text-decoration: none;
+outline: none;
+font-style:oblique;
+}
+.header__login:active,
+.header__login:hover{
+    text-decoration: none;
+    outline: none;
+    color:rgb(101, 101, 102);
+    font-style:oblique;
+}
+
+.settings-container{
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 4fr;
 }

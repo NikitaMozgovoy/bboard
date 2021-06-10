@@ -1,17 +1,27 @@
 {% extends 'layout/basic.html' %}
 {% block title %}{{ current_rubric.name }}{% endblock title %}
+
 {% block content %}
-    <h2>Рубрика: <a style="display:inline" href = "{% url 'by_rubric' current_rubric.pk %}"><b>{{ current_rubric.name }}</b></a></h2>
+
+<p>Рубрика:  <a style="display:inline" class='article__inner__link' href = "{% url 'by_rubric' current_rubric.pk %}"><b>{{ current_rubric.name }}</b></a></h2></p>
     {% if not bbs %}
         <p>В этой рубрике еще нет объявлений. Будьте первыми</p> 
     {% else %}
+    <div class='article'>
     {% for bb in bbs %}
     <div>
-        <h2>{{ bb.title }}</h2>
-        <a href="{% url 'detail' bb.pk %}"><img style = "height:250px; width:250px;" src="{{ bb.image.url }}"></a>
-        <p>{{ bb.content }}</p>
+        <a class="article__ad__link"  href="{% url 'detail' pk=bb.pk %}"><div class="article__ad">
+            <div class='article__ad__image-container'><img class="article__ad__image"src="{{ bb.image.url}}"></div>
+            <div class="article__ad-container">
+                <div  class="article__ad__price">{{ bb.price }} руб.</div >
+            <div  class="article__ad__title">{{ bb.title }}</div >
+            <div class="article__ad__place">{{ bb.place }}</div >
+            
+        </div>
+        
         <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
-    </div>
+    </div></div></a>
     {% endfor %}
+    </div>
     {% endif %}
 {% endblock content %}

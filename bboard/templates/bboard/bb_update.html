@@ -2,11 +2,11 @@
 {% block title %}Доска объявлений{% endblock title %}
 {% block content %}
 <h2>Изменение объявлений</h2>
-{% if  user.username == bb.author or user.is_superuser or user.is_staff %}
+{% if  user.username == bb.author %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Сохранить">
+    <input type="submit" value="Сохранить" class='login__article__button'>
 </form>
 {% else %}
 <p>У вас нет прав для редактирования этой записи</p>

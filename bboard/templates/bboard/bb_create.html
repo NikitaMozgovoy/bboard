@@ -2,13 +2,16 @@
 {% block title %}Доска объявлений{% endblock title %}
 {% block content %}
 {% if user.is_authenticated %}
+<div class='registration-container'> 
     <h2>Добавление объявлений</h2>
+    
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Добавить">
+        <p class='login__article__button-container'><button class="login__article__button"> <input type="submit" value="Добавить"></button></p>
     </form>
+    </div>
 {% else %}
-    <p><a style ="display:inline" href="{% url 'login' %}">Войдите</a> в аккаунт или <a style="display:inline" href="{% url 'registration' %}">зарегистрируйтесь</a></p>
+<a style ="display:inline" href="{% url 'login' %}">Войдите</a> в аккаунт или <a style="display:inline" href="{% url 'registration' %}">зарегистрируйтесь</a>
 {% endif %}
 {% endblock content %}
