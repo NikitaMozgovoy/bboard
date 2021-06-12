@@ -236,8 +236,7 @@ article{
   .article__ad{
       display: grid;
       grid-template-rows: 1fr 1fr;
-      max-width:265px;
-      width: 100%;
+      width:265px;
       border-radius: 25px;
       max-height: 400px;
       height: 100%;
