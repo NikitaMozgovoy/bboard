@@ -253,12 +253,12 @@ article{
   }
   
   .article__ad-container{
-      display: grid;
-      grid-template-rows: 1fr 1fr 0,2fr;
-  padding: 0px 15px 15px 15px;
-  align-items: center;
-  border:solid 1px gray;
-  border-radius:  0px 0px 25px 25px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 0,2fr;
+    padding: 0px 15px 5px 20px;
+    align-items: center;
+    border:solid 1px gray;
+    border-radius:  0px 0px 25px 25px;
   }
   
   .article__ad__image-container{
