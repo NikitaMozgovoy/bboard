@@ -19,7 +19,7 @@
         <div class=" article__inner__description__position">Номер телефона</div>
         <div class="article__inner__info__description">{{ bb.phone }}</div>
 
-        {% if username == bb.author or request.user.is_superuser %}
+        {% if username == bb.author or request.user.is_superuser or request.user.is_staff %}
         <div class='settings-container'>
             <a class='settings' href="{% url 'update' pk=bb.pk %}">Изменить</a>
             <a class='settings' href="{% url 'delete' pk=bb.pk %}">Удалить</a>
