@@ -7,7 +7,7 @@ from django.contrib.auth.views import LoginView
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
-from .models import Bb, Rubric
+from .models import Bb, Rubric, CustomUser
 from .forms import BbForm, SignUpForm
 
 class BbIndexView(ArchiveIndexView):
@@ -47,6 +47,10 @@ class BbCreateView(CreateView):
         form.request = self.request
         return form
     
+    def form_valid(self, form):
+        form.instance.phone = self.request.user.phone
+        return super(BbCreateView, self).form_valid(form)
+
     def get_initial(self):
         if self.request.user.username!="":
             initial = super(BbCreateView, self).get_initial()

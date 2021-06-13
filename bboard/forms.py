@@ -37,6 +37,8 @@ class BbForm(ModelForm):
         fields = ['title', 'content', 'price', 'rubric', 'image', 'author', 'place']
         widgets = {'author': forms.HiddenInput(), 'phone': forms.HiddenInput()}
 
+    
+
 class SignUpForm(UserCreationForm):
     username = forms.CharField(label = "Имя пользователя", widget = forms.TextInput(attrs={'class': 'form-control'}))
     first_name = forms.CharField(label = "Имя", widget = forms.TextInput(attrs={'class': 'form-control'}), max_length=32)

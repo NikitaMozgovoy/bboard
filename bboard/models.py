@@ -53,7 +53,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email=models.EmailField(max_length=64,verbose_name = "E-mail")
     password = models.CharField(max_length=300, verbose_name='Пароль')
     is_active = models.BooleanField(default = True, verbose_name='Онлайн')
-    phone = models.CharField(max_length=30, verbose_name="Телефон", default="Номер не указан")
+    phone = models.CharField(max_length=30, verbose_name="Телефон", default="Номер не указан", unique=True)
     is_superuser = models.BooleanField(verbose_name="Супер-пользователь", default=False, null=False)
     is_staff = models.BooleanField(verbose_name="Персонал", default=False, null=False)
     date_joined = models.DateField(verbose_name="Дата регистрации",auto_now_add=True)
@@ -85,7 +85,7 @@ class Bb(models.Model):
     rubric = models.ForeignKey('Rubric', verbose_name='Рубрика', null=True, blank = False, on_delete=models.PROTECT)
     author = models.CharField(max_length=30, verbose_name = "Автор", null=False, default="Пользователь")
     image = models.ImageField(upload_to='images/ads', editable=True, null = False, blank=False)
-    phone = models.CharField(verbose_name="Мобильный телефон" , max_length=20, null=False, blank=False)
+    phone = models.CharField(verbose_name="Мобильный телефон" , max_length=30)
     place = models.CharField(verbose_name="Адрес", max_length=80, null=True, blank=False)
 
     class Meta:
