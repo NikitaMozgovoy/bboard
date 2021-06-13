@@ -48,14 +48,13 @@
 }
 
 .header__categories__button{
-    
     height: 40px;
     justify-content: center;
     align-items: center;
     border-radius: 25px;
-   max-width: 300px;
-   width: 100%;
-   font-weight: bold;
+    max-width: 300px;
+    width: 100%;
+    font-weight: bold;
     color: white;
     border:none;
 }
@@ -213,7 +212,7 @@ article{
     width:100%;
     margin-top: 60px;
     margin-bottom: 60px;
-    min-height: 300px;
+    min-height: 257px;
 }
 .article{
     display: grid;
@@ -231,15 +230,15 @@ article{
     border:solid 1px gray;
   }
   
-  .article__ad{
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-      width:265px;
-      border-radius: 25px;
-      max-height: 400px;
-      height: 100%;
-  }
-  .article__ad__profile{
+.article__ad{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    width:265px;
+    border-radius: 25px;
+    max-height: 400px;
+    height: 100%;
+}
+.article__ad__profile{
     display: grid;
     grid-template-rows: 1fr 1fr;
     max-width:265px;
@@ -247,54 +246,53 @@ article{
     border-radius: 25px;
     max-height: 600px;
     height: 100%;
-  }
+}
   
-  .article__ad-container{
+.article__ad-container{
     display: grid;
     grid-template-rows: 1fr 1fr 0,2fr;
     padding: 0px 15px 5px 20px;
     align-items: center;
     border:solid 1px gray;
     border-radius:  0px 0px 25px 25px;
-  }
+}
   
-  .article__ad__image-container{
-      border-radius: 25px 25px 0px 0px;
-      display: grid;
-      align-items: center;
-      background-color: #C4C4C4;
-      height: 285px;
+.article__ad__image-container{
+    border-radius: 25px 25px 0px 0px;
+    display: grid;
+    align-items: center;
+    background-color: #C4C4C4;
+    height: 285px;
+}
   
-  }
+.article__ad__price{
+    font-size: 24px;
+    font-weight: bold;
+}
   
-  .article__ad__price{
-  font-size: 24px;
-  font-weight: bold;
-  }
-  
-  .article__ad__title{
-  align-self: start;
-  }
+.article__ad__title{
+    align-self: start;
+}
 
-  .article__ad__place{
-      color:#5f5a5a;
-      font-size: 14px;
-  }
+.article__ad__place{
+    color:#5f5a5a;
+    font-size: 14px;
+}
   
   
-  .article__ad__link:active, /* активная/посещенная ссылка */
-  .article__ad__link:hover,  /* при наведении */
-  .article__ad__link{
+.article__ad__link:active, /* активная/посещенная ссылка */
+.article__ad__link:hover,  /* при наведении */
+.article__ad__link{
     text-decoration: none;
     color: black;
     max-height: 400px;
     cursor: pointer;
   
-  }
+}
 /*ADD*/
 
 /* ВХОД */
- input{
+input{
     width: 100%;
     padding: 0 0 10px 0;
     border: none; 
@@ -306,7 +304,7 @@ article{
 
 }
 
- label{
+label{
     font-size:12px;
     color: rgb(112, 112, 112);
 }
@@ -320,43 +318,38 @@ article{
     color:white;
     font-weight: bold;
     padding-top:7px;
-
-
 }
 
 .login input .login__article__button__input{
 color: white;
 }
-.login__article__button-container{
 
+.login__article__button-container{
     display: grid;
     justify-content: center;
     align-content: center;
 }
+
 .login__article__registration{
     margin:20px;
     display: grid;
     justify-content: center;
     align-content: center;
 }
+
 .nav__item:active, /* активная/посещенная ссылка */
 .nav__item:hover,  /* при наведении */
 .nav__item{
- 
   color:black;
-
 }
 
 .login__article{
-        margin-top:50px;
-            margin-left:auto;
-            margin-right:auto;
-            max-width: 700px;
-            min-width: 320px;
-            width:100%;
-           
-        
-    
+    margin-top:50px;
+    margin-left:auto;
+    margin-right:auto;
+    max-width: 700px;
+    min-width: 320px;
+    width:100%;
 }
 
 .login__article__header{
@@ -413,6 +406,7 @@ text-decoration: none;
 outline: none;
 font-style:oblique;
 }
+
 .header__login:active,
 .header__login:hover{
     text-decoration: none;
