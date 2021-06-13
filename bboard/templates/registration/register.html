@@ -7,8 +7,8 @@
     <h1>Создание аккаунта</h1>
     <p>Пожалуйста, заполните форму ниже:</p>
     <form action="." method="post">
-        {{ form.as_p }}
         {% csrf_token %}
+        {{ form.as_p }}
         <p class='login__article__button-container'><button class="login__article__button"><input type="submit" value="Создать аккаунт"></button></p>
     </form>
 </div>
