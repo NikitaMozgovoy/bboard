@@ -18,8 +18,6 @@ class UserManager(BaseUserManager):
         if email is None:
             raise TypeError('Users must have an email address.')
 
-        date_joined = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-
         user = self.model(username=username, email=self.normalize_email(email), date_joined=date_joined)
         user.set_password(password)
         user.save()
@@ -58,7 +56,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     phone = models.CharField(max_length=30, verbose_name="Телефон", default="Номер не указан")
     is_superuser = models.BooleanField(verbose_name="Супер-пользователь", default=False, null=False)
     is_staff = models.BooleanField(verbose_name="Персонал", default=False, null=False)
-    date_joined = models.DateField(verbose_name="Дата регистрации",default="2021-01-01")
+    date_joined = models.DateField(verbose_name="Дата регистрации",auto_now_add=True)
 
     USERNAME_FIELD = "username"
     EmailField = "email"
