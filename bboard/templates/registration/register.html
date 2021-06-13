@@ -6,10 +6,16 @@
 <div class='registration-container'>
     <h1>Создание аккаунта</h1>
     <p>Пожалуйста, заполните форму ниже:</p>
+    {% csrf_token %}
     <form action="." method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <p class='login__article__button-container'><button class="login__article__button"><input type="submit" value="Создать аккаунт"></button></p>
+        <p><label for="id_username">Имя пользователя:</label> <input type="text" name="username" class="form-control" autofocus="" required="" id="id_username"></p>
+        <p><label for="id_first_name">Имя:</label> <input type="text" name="first_name" class="form-control" maxlength="32" required="" id="id_first_name"></p>
+        <p><label for="id_last_name">Фамилия:</label> <input type="text" name="last_name" class="form-control" maxlength="32" required="" id="id_last_name"></p>
+        <p><label for="id_email">E-mail:</label> <input type="email" name="email" class="form-control" maxlength="64" required="" id="id_email"> <span class="helptext">Введите существующий адрес</span></p>
+        <p><label for="id_phone_0">Номер телефона  +7 :</label> <input type="text" name="phone_0" size="3" maxlength="3" required="" id="id_phone_0"><input type="text" name="phone_1" size="7" maxlength="7" required="" id="id_phone_1"> <span class="helptext">В первое поле введите код города, во второе - сам номер</span></p>
+        <p><label for="id_password1">Пароль:</label> <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1"> <span class="helptext"></span></p><p></p>
+        <p><label for="id_password2">Подтверждение пароля:</label> <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2"> <span class="helptext">Для подтверждения введите, пожалуйста, пароль ещё раз.</span></p>
+        <p class="login__article__button-container"><button class="login__article__button"><input type="submit" value="Создать аккаунт"></button></p>
     </form>
 </div>
 {% endblock %}
