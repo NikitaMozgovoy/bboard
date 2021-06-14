@@ -5,7 +5,7 @@ from rest_framework.permissions import BasePermission, IsAuthenticated, SAFE_MET
 
 class BbViewSet(viewsets.ModelViewSet):
     queryset = Bb.objects.all()
-    permission_classes=[IsAuthenticated & IsAdminUser]
+    permission_classes=[IsAuthenticated]
     serializer_class=BbSerializer
 
     action_to_serializer = {
@@ -19,10 +19,10 @@ class BbViewSet(viewsets.ModelViewSet):
 
 class RubricViewSet(viewsets.ModelViewSet):
     queryset = Rubric.objects.all()
-    permission_classes=[IsAuthenticated & IsAdminUser]
+    permission_classes=[IsAuthenticated]
     serializer_class=RubricSerializer
 
 class UsersViewSet(viewsets.ModelViewSet):
     queryset = CustomUser.objects.all()
-    permission_classes=[IsAuthenticated & IsAdminUser]
+    permission_classes=[IsAuthenticated ]
     serializer_class=UsersSerializer
