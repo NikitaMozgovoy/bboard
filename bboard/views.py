@@ -55,7 +55,7 @@ class BbCreateView(CreateView):
         if self.request.user.username!="":
             initial = super(BbCreateView, self).get_initial()
             initial['author'] = self.request.user.username
-            initial['phone'] = self.request.user.phone
+            # initial['phone'] = self.request.user.phone
             return initial
     
 class BbDetailView(DetailView):
